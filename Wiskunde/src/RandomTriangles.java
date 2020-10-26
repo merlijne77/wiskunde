@@ -7,7 +7,6 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -47,7 +46,7 @@ public class RandomTriangles extends Canvas {
 	public void paint( Graphics g )
 	
     {
-		
+	
 		for (int x = 0; x<numberOffTriangles; x++){
 	
 		Polygon triangle = new Polygon();
@@ -100,13 +99,13 @@ public class RandomTriangles extends Canvas {
         JButton b = new JButton("REPAINT");
       
         b.setBounds(700, 650, 100, 100);
-
+        b.setBackground(Color.pink);
+  
         RandomTriangles triangles = new RandomTriangles();
-     
+      triangles.setBackground(Color.pink);
  
         //add button to the frame.
         winnew.add(b);
-        
         winnew.add( triangles);
         b.addActionListener(new ActionListener() {
 	        
