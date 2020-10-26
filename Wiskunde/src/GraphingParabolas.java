@@ -22,8 +22,8 @@ public class GraphingParabolas
 //		}
 
 		//Huiswerk les 8 opdracht 1
-		GraphPaper gp2 = new GraphPaper(320,10);
-		for ( double x = -10; x<=10; x+=0.01 )
+		Assenstelsel gp2 = new Assenstelsel(320,10);
+		for ( double x = -10; x<=10; x+=0.01 )//
 		{
 			a = 2;
 			h = -0.25; //k = 5;
@@ -33,12 +33,12 @@ public class GraphingParabolas
 		}
 
 		//Huiswerk les 8 opdracht 2
-		GraphPaper gp3 = new GraphPaper(630,10);
-		for ( double x = -10; x<=10; x+=0.01 )
+		Assenstelsel gp3 = new Assenstelsel(630,10);
+		for ( double x = -10; x<=10; x+=0.005 )
 		{
 			a = 2;
 			//h = -1; //k = -3;
-			y = 2*Math.pow(x,2) + 1;
+			y = 2*Math.pow(x,a) + 1;
 			gp3.drawPoint(x,y);
 		   
 		}

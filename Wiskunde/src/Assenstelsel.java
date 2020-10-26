@@ -5,16 +5,16 @@ import javax.swing.JFrame;
 import java.awt.*;
 
 @SuppressWarnings("serial")
-public class GraphPaper extends JFrame
+public class Assenstelsel extends JFrame
 {
 	private static Graphics gBuf = null;
 	private static GraphPaperCanvas canvas = null;
 	private static Image vm = null;
 	private int x, y;
-	private int w, h, k, middenVanX, beginVanYas, beginVanXas;
+	private int w, h, k, yAs, beginVanYas, xAs, xSteps, ySteps;
 
 	
-	public GraphPaper( int x, int y )
+	public Assenstelsel( int x, int y )
 	{
 		if ( canvas == null )
 		{
@@ -76,7 +76,6 @@ public class GraphPaper extends JFrame
 	{
 		if ( px > 10 || px < -10 || py > 10 || py < -10 )
 			return;
-		
 		px *= w/20;
 		py *= h/20;
 		px += w/2 + 1;
@@ -85,28 +84,28 @@ public class GraphPaper extends JFrame
         canvas.repaint();
 	}
 	
-	//Mijn methode om de x en y-as te nummeren
-	//de parameters x en y zijn de beginlocatie op het canvas van de grafiek
+	//om de x en y-as te nummeren
+	//de parameters x en y zijn de beginlocatie van de grafiek op het canvas
 	public void drawNumbersAssen(int x, int y) {
-	    middenVanX = x + w/2-8;
-	    beginVanXas = y + w/2+8;
-	    y = y + 5;
-		String nummerString = "-10-9 -8 -7 -6 -5 -4 -3 -2 -1 0 1  2  3 4  5  6  7  8 9 10";
-		gBuf.drawString(nummerString, x-15, beginVanXas);;
-		
+	    yAs = x + w/2-8;
+	    xAs = y + w/2+8;
+	    xSteps = x-5;
+	    ySteps = y + 5;
+	   
 		//Nummering van de X-as
 		for(Integer j = -10; j<10; j++) {
-			
+			gBuf.drawString(Integer.toString(j), xSteps, xAs);
+			xSteps = xSteps + w/20;//stapje verder op de as
 		}
 		//Nummering van de Y-as
 		for(Integer i = 10; i >= -10; i--) {
 			if(i<0) {//als de nummers kleiner zijn dan nul verschuift het middelpunt vanwege de - die ervoor komt.
-				middenVanX = x + w/2-10;
+				yAs = x + w/2-10;//stapje verder op de as
 			  } 
 			if(i!=0) {//0 word niet gedrukt want die staat al in de x as
-			gBuf.drawString(Integer.toString(i), middenVanX, y);
+			gBuf.drawString(Integer.toString(i), yAs, ySteps);
 			}
-			y= y + w/20;//w/20 = de breedte van het grit gedeeld door 20
+			ySteps= ySteps + w/20;//w/20 = de breedte van het grit gedeeld door 20
 			}
 		}
 }
