@@ -29,7 +29,7 @@ public class GraphingParabolas
 			h = -0.25; //k = 5;
 			y= h * x + a;
 //			y = a*Math.pow(x,2) + k;
-			gp2.drawPoint(x,y);
+			gp2.drawLine(x,y, Color.BLUE);
 		}
 
 		//Huiswerk les 8 opdracht 2
@@ -39,7 +39,7 @@ public class GraphingParabolas
 			a = 2;
 			//h = -1; //k = -3;
 			y = 2*Math.pow(x,a) + 1;
-			gp3.drawPoint(x,y);
+			gp3.drawLine(x,y, Color.BLUE);
 		   
 		}
 
