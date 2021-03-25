@@ -12,27 +12,32 @@ public class Assenstelsel extends JFrame
 	private static Image vm = null;
 	private int x, y;
 	private int breedte, hoogte, yAs, xAs, xSteps, ySteps, numbers;
-	private Color col;
+	private Color col;//de kleur van de tekening
 	
 
 	//constructor met de parameters x,y (de locatie van de grafiek op het canvas)
 	public Assenstelsel( int x, int y )
 	{   this.x = x;
 		this.y = y;
-		breedte = 500;
-		hoogte = 500;
+		breedte = 900;
+		hoogte = 900;
 		numbers = 20;
 		createCanvas();
 		drawBounds();
        }
 	
-	//ook zorgen dat hij met de nieuwe constructor in het midden komt.
-	
+	//constructor met de parameters, breedte van de grafiek, hoogte en locatie x,y
 	public Assenstelsel(int breedte, int hoogte, int x, int y) {
-		numbers = 20;
+		
+		//TODO: Toch in constructor nummers laten invoeren maar zorgen dat als er meer nummers ingevoerd
+		//worden de grafiek groter wordt. En een maximum nummers doen.
+		//BUG: Als je nu voor 20 kiest staan er 21 vakjes en kiest hij het midden van 1 vakje waardoor de
+		//assen niet op een lijntje staan.
+		//Nummers lopen niet genoeg door.
+		numbers = 40;
 		createCanvas();
-		this.x = canvas.getWidth()/2 + breedte/2;
-		this.y = canvas.getHeight()/2;
+		this.x = 40;
+		this.y = 40;
 		this.breedte = breedte;
 		this.hoogte = hoogte;
 		drawBounds();
@@ -86,18 +91,18 @@ public class Assenstelsel extends JFrame
 	    xAs = y + breedte/2+8;
 	    xSteps = x-5;
 	    ySteps = y + 5;
-	    int numberOnOneAs = (numbers/2);
-	    System.out.println(numberOnOneAs);
+	    int helftNummers = (numbers/2);//helft nummers aan iedere kant van de oorsprong
+	    System.out.println(helftNummers);//test
 	   
 		//Nummering van de X-as
-		for(Integer j = -numberOnOneAs; j<numberOnOneAs; j++) {
+		for(Integer j = -helftNummers; j<helftNummers; j++) {
 			gBuf.drawString(Integer.toString(j), xSteps, xAs);
 			xSteps = xSteps + breedte/numbers;//stapje verder op de as
 		}
 		//Nummering van de Y-as
-		for(Integer i = numberOnOneAs; i >= -numberOnOneAs; i--) {
+		for(Integer i = helftNummers; i >= -helftNummers; i--) {
 			if(i<0) {//als de nummers kleiner zijn dan nul verschuift het middelpunt vanwege de - die ervoor komt.
-				yAs = x + breedte/2-10;//stapje verder op de as
+				yAs = x + breedte/2-10;//stapje verder op de as, kleine correctie eraf
 			  } 
 			if(i!=0) {//0 word niet gedrukt want die staat al in de x as
 			gBuf.drawString(Integer.toString(i), yAs, ySteps);
